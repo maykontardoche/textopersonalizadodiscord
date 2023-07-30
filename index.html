@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<title>Editor de Texto Personalizado</title>
+<meta charset="UTF-8">
+<meta name="description" content="Rebane's Discord Colored Text Generator">
+<meta name="author" content="rebane2001">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<h1>Gerador de texto <span style="color:#5865F2">Personalizado</span> para o discord</h1>
+<div class="container">
+<h3>Sobre</h3>
+<p>Este é um site simples que cria mensagens coloridas do Discord usando os códigos de cores ANSI disponíveis nas versões mais recentes da área de trabalho do Discord.</p>
+<p>Para usar isso, escreva seu texto, selecione partes dele e atribua cores a elas, depois copie usando o botão abaixo e envie uma mensagem no Discord.</p>
+<h3>Codigo Font</h3>
+<p>Este aplicativo é executado inteiramente em seu navegador e o código-fonte está disponível gratuitamente em <a href="https://gist.github.com/rebane2001/07f2d8e80df053c70a1576d27eabe97c">GitHub</a>. Shout out to kkrypt0nn for <a href="https://gist.github.com/kkrypt0nn/a02506f3712ff2d1c8ca7c9e0aed7c06">this guide</a>.</p>
+</div>
+<h2>Create your text</h2>
+<button data-ansi="0" class="button style-button">Reset All</button>
+<button data-ansi="1" class="button style-button ansi-1">Bold</button>
+<button data-ansi="4" class="button style-button ansi-4">Line</button>
+<br><br>
+<strong>FG</strong>
+<button data-ansi="30" class="button style-button ansi-30-bg">&nbsp;</button>
+<button data-ansi="31" class="button style-button ansi-31-bg">&nbsp;</button>
+<button data-ansi="32" class="button style-button ansi-32-bg">&nbsp;</button>
+<button data-ansi="33" class="button style-button ansi-33-bg">&nbsp;</button>
+<button data-ansi="34" class="button style-button ansi-34-bg">&nbsp;</button>
+<button data-ansi="35" class="button style-button ansi-35-bg">&nbsp;</button>
+<button data-ansi="36" class="button style-button ansi-36-bg">&nbsp;</button>
+<button data-ansi="37" class="button style-button ansi-37-bg">&nbsp;</button>
+<br><br>
+<strong>BG</strong>
+<button data-ansi="40" class="button style-button ansi-40">&nbsp;</button>
+<button data-ansi="41" class="button style-button ansi-41">&nbsp;</button>
+<button data-ansi="42" class="button style-button ansi-42">&nbsp;</button>
+<button data-ansi="43" class="button style-button ansi-43">&nbsp;</button>
+<button data-ansi="44" class="button style-button ansi-44">&nbsp;</button>
+<button data-ansi="45" class="button style-button ansi-45">&nbsp;</button>
+<button data-ansi="46" class="button style-button ansi-46">&nbsp;</button>
+<button data-ansi="47" class="button style-button ansi-47">&nbsp;</button>
+<br><br>
+<div class="flex"><div id="textarea" contenteditable="true">Welcome to&nbsp;<span class="ansi-33">Rebane</span>'s <span class="ansi-45"><span class="ansi-37">Discord</span></span>&nbsp;<span class="ansi-31">C</span><span class="ansi-32">o</span><span class="ansi-33">l</span><span class="ansi-34">o</span><span class="ansi-35">r</span><span class="ansi-36">e</span><span class="ansi-37">d</span>&nbsp;Text Generator!</div></div>
+<br>
+<button class="button copy">Copy text as Discord formatted</button>
+<br>
+<br>
+<small>This is an unofficial tool, it is not made or endorsed by Discord.</small>
+<script type="text/javascript">
+    const textarea = document.querySelector("#textarea");
+    const copybtn = document.querySelector(".button.copy");
+
+    // Some basic escaping of pasted HTML tags, not ideal but good enough for this situation.
+    textarea.oninput = () => {
+        const base = textarea.innerHTML.replace(/<(\/?(br|span|span class="ansi-[0-9]*"))>/g,"[$1]");
+        if (base.includes("<") || base.includes(">")) textarea.innerHTML = base.replace(/<.*?>/g,"").replace(/[<>]/g,"").replace(/\[(\/?(br|span|span class="ansi-[0-9]*"))\]/g,"<$1>");
+    };
+
+    // https://stackoverflow.com/a/61237402
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+            document.execCommand('insertLineBreak')
+            event.preventDefault()
+        }
+    });
+
+    document.querySelectorAll(".style-button").forEach((btn) => {
+        btn.onclick = () => {
+            if (!btn.dataset.ansi) {
+                textarea.innerText = textarea.innerText;
+                return;
+            }
+
+            const selection = window.getSelection();
+            const text = window.getSelection().toString();
+            
+            const span = document.createElement("span");
+            span.innerText = text;
+            span.classList.add(`ansi-${btn.dataset.ansi}`);
+
+            const range = selection.getRangeAt(0);
+            range.deleteContents();
+            range.insertNode(span);
+
+            range.selectNodeContents(span);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        };
+    });
+
+    function nodesToANSI(nodes, states) {
+        let text = ""
+        for (const node of nodes) {
+            if (node.nodeType === 3) {
+                text += node.textContent;
+                continue;
+            }
+            if (node.nodeName === "BR") {
+                text += "\n";
+                continue;   
+            }
+            const ansiCode = +(node.className.split("-")[1]);
+            const newState = Object.assign({}, states.at(-1));
+
+            if (ansiCode < 30) newState.st = ansiCode;
+            if (ansiCode >= 30 && ansiCode < 40) newState.fg = ansiCode;
+            if (ansiCode >= 40) newState.bg = ansiCode;
+
+            states.push(newState)
+            text += `\x1b[${newState.st};${(ansiCode >= 40) ? newState.bg : newState.fg}m`;
+            text += nodesToANSI(node.childNodes, states);
+            states.pop()
+            text += `\x1b[0m`;
+            if (states.at(-1).fg !== 2) text += `\x1b[${states.at(-1).st};${states.at(-1).fg}m`;
+            if (states.at(-1).bg !== 2) text += `\x1b[${states.at(-1).st};${states.at(-1).bg}m`;
+        }
+        return text;
+    }
+
+    let copyCount = 0;
+    let copyTimeout = null;
+
+    copybtn.onclick = () => {
+        const toCopy = "```ansi\n" + nodesToANSI(textarea.childNodes, [{ fg: 2, bg: 2, st:2 }]) + "\n```";
+        navigator.clipboard.writeText(toCopy).then(() => {
+            if (copyTimeout) clearTimeout(copyTimeout);
+
+            const funnyCopyMessages = copybtn.innerText = ["Copied!", "Double Copy!", "Triple Copy!", "Dominating!!", "Rampage!!", "Mega Copy!!", "Unstoppable!!", "Wicked Sick!!", "Monster Copy!!!", "GODLIKE!!!", "BEYOND GODLIKE!!!!", Array(16).fill(0).reduce(p => p + String.fromCharCode(Math.floor(Math.random() * 65535)),"")];
+
+            copybtn.style.backgroundColor = (copyCount <= 8) ? "#3BA55D" : "#ED4245";
+            copybtn.innerText = funnyCopyMessages[copyCount];
+            copyCount = Math.min(11, copyCount + 1);
+            copyTimeout = setTimeout(() => {
+                copyCount = 0;
+                copybtn.style.backgroundColor = null;
+                copybtn.innerText = "Copy text as Discord formatted";
+            }, 2000)
+
+        }, (err) => {
+            // We don't need to stop the users if they get a little too excited about the button
+            if (copyCount > 2) return;
+            alert("Copying failed for some reason, let's try showing an alert, maybe you can copy it instead.");
+            alert(toCopy);
+        });
+    }
+</script>
+</body>
+</html>
