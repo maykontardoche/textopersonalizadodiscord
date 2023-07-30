@@ -4,26 +4,35 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <title>Editor de Texto Personalizado</title>
 <meta charset="UTF-8">
-<meta name="description" content="Rebane's Discord Colored Text Generator">
-<meta name="author" content="rebane2001">
+<meta name="description" content="gg/yoshibrosFPS  Maykon Tardoche">
+<meta name="author" content="Maykon Tardoche">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
-<h1>Gerador de texto <span style="color:#5865F2">Personalizado</span> para o discord</h1>
+<h1>Gerador de Texto <span style="color:#5865F2">Personalizado</span> para o Discord</h1>
 <div class="container">
-<h3>Sobre</h3>
+<h3>SOBRE</h3>
 <p>Este é um site simples que cria mensagens coloridas do Discord usando os códigos de cores ANSI disponíveis nas versões mais recentes da área de trabalho do Discord.</p>
 <p>Para usar isso, escreva seu texto, selecione partes dele e atribua cores a elas, depois copie usando o botão abaixo e envie uma mensagem no Discord.</p>
-<h3>Codigo Font</h3>
-<p>Este aplicativo é executado inteiramente em seu navegador e o código-fonte está disponível gratuitamente em <a href="https://gist.github.com/rebane2001/07f2d8e80df053c70a1576d27eabe97c">GitHub</a>. Shout out to kkrypt0nn for <a href="https://gist.github.com/kkrypt0nn/a02506f3712ff2d1c8ca7c9e0aed7c06">this guide</a>.</p>
+          
+                <div class="fonte">
+                  <h3>CÓDIGO FONTE</h3>
+                     <p>Este aplicativo é executado inteiramente em seu navegador e o código-fonte está disponível gratuitamente em <a href="https://github.com/maykontardoche/textopersonalizadodiscord">GitHub</a>.</p>
+                </div>
+
 </div>
-<h2>Create your text</h2>
-<button data-ansi="0" class="button style-button">Reset All</button>
-<button data-ansi="1" class="button style-button ansi-1">Bold</button>
-<button data-ansi="4" class="button style-button ansi-4">Line</button>
+                <h2><span class="ansi-31">C</span><span class="ansi-32">R</span><span class="ansi-33">I</span>E <span class="ansi-34">S</span><span class="ansi-35">E</span>
+                    <span class="ansi-36">U</span> <span class="ansi-37">T</span><span class="ansi-31">E</span><span class="ansi-32">X</span><span class="ansi-33">T</span>
+                        <span class="ansi-31">O</span><span class="ansi-41">PERSONALIZADO</span> <span class="ansi-43">AQUI</h2></span>
+<button data-ansi="0" class="button style-buttonr">Reset Tudo</button>
+<button data-ansi="1" class="button style-buttonn ansi-1">Negrito</button>
+<button data-ansi="4" class="button style-buttonn ansi-4">Subrinhado</button>
 <br><br>
-<strong>FG</strong>
+<div class="quadrado-vidro">
+<strong class="escrita">COR TEXTO</strong>
+<div class="color_texto">
 <button data-ansi="30" class="button style-button ansi-30-bg">&nbsp;</button>
 <button data-ansi="31" class="button style-button ansi-31-bg">&nbsp;</button>
 <button data-ansi="32" class="button style-button ansi-32-bg">&nbsp;</button>
@@ -33,7 +42,14 @@
 <button data-ansi="36" class="button style-button ansi-36-bg">&nbsp;</button>
 <button data-ansi="37" class="button style-button ansi-37-bg">&nbsp;</button>
 <br><br>
-<strong>BG</strong>
+</div>
+</div>
+
+<div class="quadro-vidroesquerdo" contenteditable="true">
+
+<strong class="escrita-esquerda">Alterar Blackout</strong>
+
+<div class="color_texto_esquerda">
 <button data-ansi="40" class="button style-button ansi-40">&nbsp;</button>
 <button data-ansi="41" class="button style-button ansi-41">&nbsp;</button>
 <button data-ansi="42" class="button style-button ansi-42">&nbsp;</button>
@@ -42,18 +58,23 @@
 <button data-ansi="45" class="button style-button ansi-45">&nbsp;</button>
 <button data-ansi="46" class="button style-button ansi-46">&nbsp;</button>
 <button data-ansi="47" class="button style-button ansi-47">&nbsp;</button>
-<br><br>
-<div class="flex"><div id="textarea" contenteditable="true">Welcome to&nbsp;<span class="ansi-33">Rebane</span>'s <span class="ansi-45"><span class="ansi-37">Discord</span></span>&nbsp;<span class="ansi-31">C</span><span class="ansi-32">o</span><span class="ansi-33">l</span><span class="ansi-34">o</span><span class="ansi-35">r</span><span class="ansi-36">e</span><span class="ansi-37">d</span>&nbsp;Text Generator!</div></div>
+<br><br></div>
+</div>
+<div class="flex"><div id="textarea" contenteditable="true">Bem-vindo para&nbsp;<span class="ansi-33">o editor</span> de texto <span class="ansi-45"><span class="ansi-37">do Discord</span></span>&nbsp;<span class="ansi-31">C</span><span class="ansi-32">o</span><span class="ansi-33">l</span><span class="ansi-34">o</span><span class="ansi-35">r</span><span class="ansi-36">i</span><span class="ansi-37">d</span><span class="ansi-32">o</span>&nbsp;Generador de texto!</div></div>
 <br>
-<button class="button copy">Copy text as Discord formatted</button>
+<button class="button_copy"><b>COPIE O TEXTO AQUI</b></button>
 <br>
 <br>
-<small>This is an unofficial tool, it is not made or endorsed by Discord.</small>
+        <div class="rodape">
+            <small>Está não é uma ferramenta Oficial do Discord.</small>
+                <h4>Desenvolvido por Maykon Tardoche, ferramenta melhorada e modificada.</h4>
+        </div>
+
 <script type="text/javascript">
     const textarea = document.querySelector("#textarea");
-    const copybtn = document.querySelector(".button.copy");
+    const copybtn = document.querySelector(".button_copy");
 
-    // Some basic escaping of pasted HTML tags, not ideal but good enough for this situation.
+    // Alguns escapes básicos de tags HTML coladas, não são ideais, mas são bons o suficiente para esta situação.
     textarea.oninput = () => {
         const base = textarea.innerHTML.replace(/<(\/?(br|span|span class="ansi-[0-9]*"))>/g,"[$1]");
         if (base.includes("<") || base.includes(">")) textarea.innerHTML = base.replace(/<.*?>/g,"").replace(/[<>]/g,"").replace(/\[(\/?(br|span|span class="ansi-[0-9]*"))\]/g,"<$1>");
@@ -67,7 +88,7 @@
         }
     });
 
-    document.querySelectorAll(".style-button").forEach((btn) => {
+    document.querySelectorAll(".style-button" ).forEach((btn) => {
         btn.onclick = () => {
             if (!btn.dataset.ansi) {
                 textarea.innerText = textarea.innerText;
@@ -90,6 +111,58 @@
             selection.addRange(range);
         };
     });
+
+     // BOTÃO RESETA TUDO
+    document.querySelectorAll(".style-buttonr").forEach((btn) => {
+  btn.onclick = () => {
+    if (!btn.dataset.ansi) {
+      textarea.innerHTML = textarea.innerHTML; // Altere de innerText para innerHTML
+      return;
+    }
+
+    const selection = window.getSelection();
+            const text = window.getSelection().toString();
+            
+            const span = document.createElement("span");
+            span.innerText = text;
+            span.classList.add(`ansi-${btn.dataset.ansi}`);
+
+            const range = selection.getRangeAt(0);
+            range.deleteContents();
+            range.insertNode(span);
+
+            range.selectNodeContents(span);
+            selection.removeAllRanges();
+            selection.addRange(range);
+  };
+});
+
+ // BOTÃO NEGRITO E SUBRINHADO
+document.querySelectorAll(".style-buttonn").forEach((btn) => {
+  btn.onclick = () => {
+    if (!btn.dataset.ansi) {
+      textarea.innerHTML = textarea.innerHTML;
+      return;
+    }
+
+    const selection = window.getSelection();
+    const text = window.getSelection().toString();
+
+    const span = document.createElement("span");
+    span.innerText = text;
+    span.classList.add(`ansi-${btn.dataset.ansi}`);
+    span.classList.add("modified-text"); // Adiciona a classe ao elemento criado
+
+    const range = selection.getRangeAt(0);
+    range.deleteContents();
+    range.insertNode(span);
+
+    range.selectNodeContents(span);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  };
+});
+
 
     function nodesToANSI(nodes, states) {
         let text = ""
@@ -128,7 +201,7 @@
         navigator.clipboard.writeText(toCopy).then(() => {
             if (copyTimeout) clearTimeout(copyTimeout);
 
-            const funnyCopyMessages = copybtn.innerText = ["Copied!", "Double Copy!", "Triple Copy!", "Dominating!!", "Rampage!!", "Mega Copy!!", "Unstoppable!!", "Wicked Sick!!", "Monster Copy!!!", "GODLIKE!!!", "BEYOND GODLIKE!!!!", Array(16).fill(0).reduce(p => p + String.fromCharCode(Math.floor(Math.random() * 65535)),"")];
+            const funnyCopyMessages = copybtn.innerText = ["Copiado!", "Dupla Cópia!", "Tripla Cópia!", "Dominador!!", "Alvoroço!!", "Mega Copia!!", "Imparável!!", "Malvado doente!!", "Monstro da Copia!!!", "GODLIKE!!!", "ALÉM DO DIVINO!!!!", Array(16).fill(0).reduce(p => p + String.fromCharCode(Math.floor(Math.random() * 65535)),"")];
 
             copybtn.style.backgroundColor = (copyCount <= 8) ? "#3BA55D" : "#ED4245";
             copybtn.innerText = funnyCopyMessages[copyCount];
@@ -136,13 +209,13 @@
             copyTimeout = setTimeout(() => {
                 copyCount = 0;
                 copybtn.style.backgroundColor = null;
-                copybtn.innerText = "Copy text as Discord formatted";
+                copybtn.innerText = "Copie o texto para o Discord formatado";
             }, 2000)
 
         }, (err) => {
-            // We don't need to stop the users if they get a little too excited about the button
+            // Não precisamos parar os usuários se eles ficarem um pouco empolgados com o botão
             if (copyCount > 2) return;
-            alert("Copying failed for some reason, let's try showing an alert, maybe you can copy it instead.");
+            alert("A cópia falhou por algum motivo, vamos tentar mostrar um alerta, talvez você possa copiá-lo.");
             alert(toCopy);
         });
     }

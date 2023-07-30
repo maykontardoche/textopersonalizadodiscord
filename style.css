@@ -1,14 +1,30 @@
 html {
     font-family: sans-serif;
-    background-color: #36393F;
+    background-color: #000000;
     text-align: center;
     color: #FFF;
+    
 }
 
 .container {
-    max-width: 500px;
+    max-width: 1000px;
     margin: auto;
+    word-wrap: break-word;
 }
+
+.fonte{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 1000px;
+}
+
+.rodape {
+    position: absolute;
+    left: 50%; /* Posiciona o elemento no centro horizontal */
+    transform: translateX(-50%); /* Ajusta o elemento para o centro exato */
+    top: 1130px;
+  }
 
 .flex {
     height: 100%;
@@ -18,40 +34,163 @@ html {
 }
 
 #textarea {
-    width: 600px;
-    height: 200px;
-    border-radius: 5px;
+    width: 700px;
+    height: 530px;
+    border-radius: 8px;
     resize: both;
     overflow: auto;
     text-align: left;
     font-family: monospace;
-    background-color: #2F3136;
-    color: #B9BBBE;
-    border: #202225 1px solid;
-    padding: 5px;
+    background-color: #161718;
+    color: #ffffff;
+    border: #ffffff 3px solid;
+    padding: 10px;
     display: inline-block;
-    
     white-space: pre-wrap;
     font-size: 0.875rem;
     line-height: 1.125rem;
     text-indent: 0;
 }
 
-.button {
-    min-height: 32px;
-    min-width: 32px;
-    border: none;
-    border-radius: 3px;
+                /* botão lado direito */
+
+.quadrado-vidro {
+    position: absolute; /* Define o posicionamento absoluto */
+    top: 350px; /* Distância do topo */
+    left: 1324px;
+    width: 100px;
+    height: 530px;
+    background: rgba(255, 255, 255, 0.2); /* Cor do quadrado com transparência (efeito de vidro) */
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ao redor do quadrado */
+    backdrop-filter: blur(10px); /* Aplica o efeito de vidro no plano de fundo do quadrado */
+    justify-content: center;
+    align-items: center;
+    border: #ffffff 2px solid;
+    
+  }
+
+  .color_texto {
+    position: absolute; /* Define o posicionamento absoluto */
+    top: 60px; /* Distância do topo */
+    left: 0px;
+    width: 100px;
+    height: 500px;
+    
+  }
+  .color_texto button {
+    margin: 3px; /* Adiciona espaçamento de 5 pixels entre os botões */
+  }
+
+  .escrita {
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); /* Sombra no texto para melhor contraste */
+    position: absolute; /* Define o posicionamento absoluto */
+    top: 6%; /* Posiciona o texto a 50% do topo do quadrado */
+    left: 50%; /* Posiciona o texto a 50% da esquerda do quadrado */
+    transform: translate(-50%, -50%); /* Centraliza o texto no centro do quadrado */
+  }
+
+        /* botão lado direito */
+
+.quadro-vidroesquerdo {
+    position: absolute;
+    top: 350px;
+    left: 473px;
+    width: 100px;
+    height: 530px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    border: #fafafa 2px solid;
+    
+}
+          
+.color_texto_esquerda {
+    position: absolute;
+    top: 60px;
+    left: 5px;
+    height: 500px;
+}
+          
+.color_texto_esquerda button {
+    margin: 3px;
+}
+          
+.escrita-esquerda {
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+          
+
+.button.style-buttonr, .button.style-buttonn {
     color: #fff;
-    background-color: #4f545c;
+    padding: 5px 40px;
+    font-size: 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+
+    /* Outros estilos opcionais */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+  }
+
+
+.button {
+    min-height: 50px;
+    min-width: 20px;
+    border: none;
+    border-radius: 100%;
+    border: 2px solid #ffffff;
+    color: #fff;
+    background-color: #1e6b83;
     font-size: 14px;
-    padding: 2px 16px;
+    padding: 2px 20px;
     cursor: pointer;
     transition: background-color 250ms linear;
 }
 
+/* Estilo base do botão */
+.button_copy {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4b5d74;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* Outros estilos opcionais */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  /* Estilo do botão ao passar o mouse */
+  .button_copy:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Reduz ligeiramente o tamanho do botão */
+  }
+  
+  /* Estilo do botão ao clicar */
+  .button_copy:active {
+    background-color: #003b80;
+    transform: scale(0.95); /* Reduz o tamanho do botão ao clicar */
+    box-shadow: none; /* Remove a sombra quando o botão é clicado */
+  }
+  
 a,a:visited {
-    color: #00AFF4
+    color: #2d37ca
 }
 
 .ansi-1 { font-weight:700; text-decoration:none;       }
